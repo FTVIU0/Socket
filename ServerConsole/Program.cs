@@ -22,19 +22,14 @@ namespace ServerConsole
             listener.Start();           // 开始侦听
             Console.WriteLine("Start Listening ...");
 
-            // 获取一个连接，中断方法
-            TcpClient remoteClient = listener.AcceptTcpClient();
-
-            // 打印连接到的客户端信息
-            Console.WriteLine("Client Connected！{0} <-- {1}",
-               remoteClient.Client.LocalEndPoint, remoteClient.Client.RemoteEndPoint);
-
-            Console.WriteLine("\n\n输入\"Q\"键退出。");
-            ConsoleKey key;
-            do
+            while (true)//接收到多个客户端的连接
             {
-                key = Console.ReadKey(true).Key;
-            } while (key != ConsoleKey.Q);
+                // 获取一个连接，同步方法
+                TcpClient remoteClient = listener.AcceptTcpClient();
+                // 打印连接到的客户端信息
+                Console.WriteLine("Client Connected！{0} <-- {1}",
+                    remoteClient.Client.LocalEndPoint, remoteClient.Client.RemoteEndPoint);
+            }
         }
     }
 }
