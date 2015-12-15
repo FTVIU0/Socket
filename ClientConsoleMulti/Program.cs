@@ -13,7 +13,8 @@ namespace ClientConsoleMulti
         static void Main(string[] args)
         {
             Console.WriteLine("Client Running ...");
-            IPAddress ip = new IPAddress(new byte[] { 192, 168, 253, 1 });
+            IPAddress ip = IPAddress.Parse("10.1.1.107");
+            //IPAddress ip = new IPAddress(new byte[] { 192, 168, 253, 1 });
             TcpClient client;
             for (int i = 0; i <= 2; i++)//建立多个客户端，与服务端通信
             {
